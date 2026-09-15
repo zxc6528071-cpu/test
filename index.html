@@ -2,460 +2,619 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="1학년 주니어 개발자의 첫 개인 포트폴리오 웹사이트입니다.">
-  <title>Kim Dev | 1학년 개발자의 첫 포트폴리오</title>
-  <!-- Google Fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>오늘의과일 — 신선 과일 마켓 포트폴리오</title>
+  <!-- SEO & Accessibility -->
+  <meta name="description" content="무거운 과일을 들고 오는 수고 없이 할인가로 신선한 과일을 집 앞까지 주문하는 B2C 커머스 웹앱 포트폴리오">
+  <!-- Google Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <!-- 외부 스타일시트 연결 -->
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- CSS 연결 -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 상단 헤더 영역 (푸른 계열 배경) -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="logo">
-        <a href="#">
-          <span class="logo-badge">Year 1</span>
-          <span class="logo-text">Kim Dev</span>
+  <!-- 🚚 [PRD 2.3] ① 상단 글로벌 무료배송 고지 바 -->
+  <aside class="global-shipping-bar" aria-label="무료배송 혜택 안내">
+    <div class="container shipping-bar-content">
+      <span class="shipping-icon">🚚</span>
+      <span class="shipping-text"><strong>50,000원 이상 구매 시 무료배송!</strong> 산지에서 갓 수확한 과일을 집 앞까지 당일 발송</span>
+      <span class="shipping-badge">산지직송</span>
+    </div>
+  </aside>
+
+  <!-- 🌊 [지시사항] 푸른 계열 배경색을 적용한 시맨틱 <header> -->
+  <header class="site-header" role="banner">
+    <div class="container header-container">
+      <div class="logo-area">
+        <a href="#home" class="logo-link" id="brand-logo" aria-label="오늘의과일 홈으로 이동">
+          <span class="logo-icon">🍎</span>
+          <div class="logo-text">
+            <span class="logo-title">오늘의과일</span>
+            <span class="logo-subtitle">Daily Fresh Fruit Portfolio</span>
+          </div>
         </a>
       </div>
-      <!-- 웹 접근성을 고려한 시맨틱 내비게이션 -->
-      <nav class="site-nav" aria-label="메인 내비게이션">
+
+      <!-- 반응형 모바일 햄버거 메뉴 버튼 -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 열기/닫기" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <!-- 4대 핵심 메뉴: 'Home', '상품목록', '장바구니', '주문 및 결제' -->
+      <nav class="main-nav" id="main-nav" role="navigation" aria-label="주요 메뉴">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#about" class="nav-link">ABOUT</a></li>
-          <li class="nav-item"><a href="#projects" class="nav-link">PROJECTS</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">CONTACT</a></li>
-          <li class="nav-item"><a href="#name"추가된 이름 class="nav-link">추가된메뉴</a></li>
-          <li class="nav-item"><a href="#addmenu"문의사항 class="nav-link">문의사항</a></li>
+          <li class="nav-item">
+            <a href="#home" class="nav-link active" data-target="home">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#products" class="nav-link" data-target="products">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+              <span>상품목록</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#cart" class="nav-link" data-target="cart">
+              <span class="cart-icon-wrapper">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                <span class="cart-badge" id="cart-count">0</span>
+              </span>
+              <span>장바구니</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#checkout" class="nav-link" data-target="checkout">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+              <span>주문 및 결제</span>
+            </a>
+          </li>
         </ul>
       </nav>
-    </div>
-
-    <!-- 헤더 내부 히어로 배너 소개 문구 -->
-    <div class="hero-content">
-      <p class="hero-tag">🌱 성장하는 주니어 개발자</p>
-      <h1 class="hero-title">안녕하세요, 매일 코딩하며 배우는<br><span class="highlight">1학년 개발자 김현우</span>입니다.</h1>
-      <h1 class="hero-title">안녕하세요, 매일 코딩하며 배우는<br><span class="highlight">1학년 개발자 김코딩</span>입니다.</h1>
-      <p class="hero-description">
-        기초를 단단히 다지고, 의미 있는 웹 서비스를 만들기 위해 끊임없이 탐구합니다.<br>
-        HTML5 시맨틱 마크업과 반응형 웹 디자인을 학습하며 첫 발을 내딛었습니다.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">프로젝트 보러가기</a>
-        <a href="#contact" class="btn btn-secondary">연락하기</a>
-      </div>
+      <!-- 모바일 메뉴 외부 클릭 시 닫히는 오버레이 -->
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
     </div>
   </header>
 
   <!-- 메인 콘텐츠 영역 -->
-  <main class="main-content">
+  <main id="main-content" role="main">
 
-    <!-- ABOUT 섹션 -->
-    <section id="about" class="section about-section" aria-labelledby="about-heading">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-sub">Who I Am</span>
-          <h2 id="about-heading" class="section-title">ABOUT ME</h2>
-          <div class="title-bar"></div>
-        </div>
-
-        <div class="about-grid">
-          <!-- 프로필 요약 카드 -->
-          <article class="about-card profile-card">
-            <div class="profile-avatar" aria-hidden="true">👨‍💻</div>
-            <h3 class="profile-name">김코딩 (Kim Coding)</h3>
-            <p class="profile-role">Computer Science Freshman (1학년)</p>
-            <p class="profile-bio">
-              "배운 것을 바로 코드로 구현해보는 것을 좋아합니다."<br>
-              수업과 독학으로 웹의 기초를 익히고 있으며, 사용자 친화적인 웹 경험을 만들어가는 프론트엔드 개발자가 되고자 합니다.
+    <!-- ======================================================== -->
+    <!-- 1. HOME 섹션                                            -->
+    <!-- ======================================================== -->
+    <section id="home" class="page-section active" aria-labelledby="home-title">
+      <!-- 히어로 배너 -->
+      <div class="hero-banner">
+        <div class="container hero-content">
+          <div class="hero-text-block">
+            <span class="hero-tag">2026 대한민국 제철 과일 직송전</span>
+            <h1 id="home-title" class="hero-heading">
+              무거운 과일 들고 오지 마세요,<br>
+              <span class="text-accent">오늘 딴 신선함</span> 그대로 문 앞 배송!
+            </h1>
+            <p class="hero-desc">
+              까다로운 당도(Brix) 선별을 통과한 A급 제철 과일만 산지 직송합니다.<br>
+              <strong>5만원 이상 구매 시 전 상품 무료배송</strong>과 특별 할인가를 만나보세요.
             </p>
-            <ul class="profile-details">
-              <li><strong>소속:</strong> 컴퓨터공학과 1학년 재학</li>
-              <li><strong>관심사:</strong> 웹 표준, 반응형 UI, 클린 코드</li>
-              <li><strong>좌우명:</strong> 작지만 단단한 코드를 매일 작성하자</li>
-            </ul>
-          </article>
-
-          <!-- 보유 기술 스택 카드 -->
-          <article class="about-card skills-card">
-            <h3 class="card-subtitle">현재 학습 중인 기술</h3>
-            <div class="skills-group">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">HTML5 (Semantic Web)</span>
-                  <span class="skill-level">85%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="HTML5 숙련도">
-                  <div class="progress-fill" style="width: 85%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">CSS3 (Responsive & Flexbox)</span>
-                  <span class="skill-level">80%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 숙련도">
-                  <div class="progress-fill" style="width: 80%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">JavaScript (기초 문법)</span>
-                  <span class="skill-level">60%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript 숙련도">
-                  <div class="progress-fill" style="width: 60%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Git & GitHub</span>
-                  <span class="skill-level">70%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Git 숙련도">
-                  <div class="progress-fill" style="width: 70%;"></div>
+            <div class="hero-actions">
+              <button class="btn btn-primary btn-lg" onclick="navigateTo('products')">
+                <span>신선 과일 쇼핑하기</span>
+                <span class="arrow">→</span>
+              </button>
+              <button class="btn btn-outline btn-lg" onclick="navigateTo('cart')">
+                <span>장바구니 바로가기</span>
+              </button>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-card-featured">
+              <span class="featured-badge">🔥 실시간 인기 1위</span>
+              <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&auto=format&fit=crop&q=80" alt="샤인머스캣 포도" class="hero-img">
+              <div class="hero-card-info">
+                <h3>김천 고당도 샤인머스캣 2kg</h3>
+                <div class="hero-price-line">
+                  <span class="rate-badge purple">42% 초특가</span>
+                  <del class="list-price">52,000원</del>
+                  <strong class="sale-price">29,900원</strong>
                 </div>
               </div>
             </div>
-
-            <div class="learning-tags">
-              <span class="tag">#웹접근성</span>
-              <span class="tag">#시맨틱태그</span>
-              <span class="tag">#모바일퍼스트</span>
-              <span class="tag">#오픈소스</span>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- PROJECTS 섹션 -->
-    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-sub">My Work</span>
-          <h2 id="projects-heading" class="section-title">PROJECTS</h2>
-          <div class="title-bar"></div>
-        </div>
-
-        <div class="projects-grid">
-          <!-- 프로젝트 1 -->
-          <article class="project-card">
-            <div class="project-thumbnail project-thumb-1">
-              <span class="project-badge">HTML & CSS</span>
-              <div class="project-icon" aria-hidden="true">🌐</div>
+      <!-- 포트폴리오 핵심 기능 하이라이트 그리드 -->
+      <div class="container section-spacer">
+        <div class="feature-strip">
+          <div class="feature-item">
+            <div class="feature-icon-box orange">🏷️</div>
+            <div>
+              <h4>가격 앵커링 3단 표시</h4>
+              <p>정가 취소선, 실판매가 강조, 구간별 할인율 뱃지 시스템</p>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">개인 포트폴리오 웹사이트</h3>
-              <p class="project-desc">
-                1학년 첫 프로젝트로 제작한 반응형 웹 포트폴리오입니다. 외부 프레임워크 없이 순수 HTML5 시맨틱 마크업과 모던 CSS Flexbox/Grid 기술을 활용하여 구현했습니다.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">Responsive</span>
-              </div>
-              <div class="project-links">
-                <a href="#about" class="project-link">자세히 보기 →</a>
-              </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box red">⚡</div>
+            <div>
+              <h4>타임세일 실시간 카운트다운</h4>
+              <p>한정 수량 초특가 마감 타이머 실시간 구동</p>
             </div>
-          </article>
-
-          <!-- 프로젝트 2 -->
-          <article class="project-card">
-            <div class="project-thumbnail project-thumb-2">
-              <span class="project-badge">Study Project</span>
-              <div class="project-icon" aria-hidden="true">📝</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box dark">🚫</div>
+            <div>
+              <h4>품절 시각화 & 재입고 알림</h4>
+              <p>흑백 필터 + 사선 스트라이프 오버레이 및 알림 신청 전환</p>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">스마트 Todo 리스트 레이아웃</h3>
-              <p class="project-desc">
-                대학 생활의 과제와 일정을 관리하기 위해 디자인한 반응형 할 일 관리 UI 템플릿입니다. 시맨틱 폼 요소와 체크박스 스타일링을 연습했습니다.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-tag">HTML5 Forms</span>
-                <span class="tech-tag">CSS Flexbox</span>
-                <span class="tech-tag">UI/UX</span>
-              </div>
-              <div class="project-links">
-                <a href="#about" class="project-link">자세히 보기 →</a>
-              </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box blue">🚚</div>
+            <div>
+              <h4>5만원 이상 무료배송 게이지</h4>
+              <p>장바구니와 주문서 전 여정 4지점 실시간 무료배송 연동</p>
             </div>
-          </article>
-
-          <!-- 프로젝트 3 -->
-          <article class="project-card">
-            <div class="project-thumbnail project-thumb-3">
-              <span class="project-badge">Clone Coding</span>
-              <div class="project-icon" aria-hidden="true">☕</div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">캠퍼스 카페 메뉴 소개 페이지</h3>
-              <p class="project-desc">
-                학교 앞 단골 카페의 메뉴판을 웹으로 재해석한 반응형 랜딩 페이지입니다. 미디어 쿼리를 활용해 스마트폰 화면에서도 한눈에 볼 수 있도록 설계했습니다.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-tag">CSS Grid</span>
-                <span class="tech-tag">Media Query</span>
-                <span class="tech-tag">Typography</span>
-              </div>
-              <div class="project-links">
-                <a href="#about" class="project-link">자세히 보기 →</a>
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- CONTACT 섹션 -->
-    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-sub">Get In Touch</span>
-          <h2 id="contact-heading" class="section-title">CONTACT</h2>
-          <div class="title-bar"></div>
-        </div>
-
-        <div class="contact-wrapper">
-          <!-- 연락처 정보 -->
-          <div class="contact-info">
-            <h3>함께 성장할 준비가 되어 있습니다!</h3>
-            <p>
-              궁금한 점이 있거나 스터디 제안, 피드백이 있으시다면 언제든 편하게 연락해 주세요. 성실하게 답변드리겠습니다.
-            </p>
-            <ul class="contact-list">
-              <li>
-                <span class="contact-label">Email:</span>
-                <a href="mailto:dev.kimcoding@example.com">dev.kimcoding@example.com</a>
-              </li>
-              <li>
-                <span class="contact-label">GitHub:</span>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/kimcoding-dev</a>
-              </li>
-              <li>
-                <span class="contact-label">Blog:</span>
-                <a href="https://velog.io" target="_blank" rel="noopener noreferrer">velog.io/@kimcoding</a>
-              </li>
-              <li>
-                <span class="contact-label">Location:</span>
-                <span>Seoul, Republic of Korea</span>
-              </li>
-            </ul>
+      <!-- 타임세일 섹션 (PRD 요건 2.1) -->
+      <section class="timesale-section" aria-labelledby="timesale-heading">
+        <div class="container">
+          <div class="section-header timesale-header">
+            <div>
+              <span class="badge-fire">⚡ TIME SALE</span>
+              <h2 id="timesale-heading" class="section-title">오늘의 깜짝 반짝특가</h2>
+              <p class="section-subtitle">오늘 밤 자정까지만 이 가격! 정해진 시간 내 주문 시 추가 혜택</p>
+            </div>
+            <div class="timer-box" id="timesale-timer" aria-live="polite">
+              <span class="timer-label">마감까지 남은 시간</span>
+              <div class="timer-digits">
+                <span class="time-part" id="timer-hours">00</span><span class="colon">:</span>
+                <span class="time-part" id="timer-minutes">00</span><span class="colon">:</span>
+                <span class="time-part" id="timer-seconds">00</span>
+              </div>
+            </div>
           </div>
 
-          <!-- 문의 폼 (시맨틱 form 태그) -->
-          <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('1학년 개발자 김현우게 메시지가 전달되었습니다 (데모).');">
-          <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('1학년 개발자 김코딩에게 메시지가 전달되었습니다 (데모).');">
-            <div class="form-group">
-              <label for="name">성명</label>
-              <input type="text" id="name" name="name" placeholder="홍길동" required>
-            </div>
-            <div class="form-group">
-              <label for="email">이메일 주소</label>
-              <input type="email" id="email" name="email" placehoㅋlder="example@domain.com" required>
-              <input type="email" id="email" name="email" placeholder="example@domain.com" required>
-            </div>
-            <div class="form-group">
-              <label for="message">메시지 내용</label>
-              <textarea id="message" name="message" rows="4" placeholder="피드백이나 응원의 한마디를 남겨주세요!" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-submit">메시지 보내기</button>
-          </form>
+          <!-- 타임세일 상품 그리드 (동적 렌더링) -->
+          <div class="products-grid" id="timesale-products-grid">
+            <!-- JS 동적 렌더링 -->
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- 오늘의 제철 추천 과일 섹션 -->
+      <section class="container section-spacer">
+        <div class="section-header flex-between">
+          <div>
+            <h2 class="section-title">🌿 산지 직송 베스트 과일</h2>
+            <p class="section-subtitle">당도 측정 검수를 마친 프리미엄 제철 과일 모음</p>
+          </div>
+          <button class="btn btn-text" onclick="navigateTo('products')">전체 상품 보러가기 →</button>
+        </div>
+        <div class="products-grid" id="home-featured-grid">
+          <!-- JS 동적 렌더링 -->
+        </div>
+      </section>
     </section>
 
-
-
-    <!-- addmenu 섹션 -->
-    <section id="about" class="section about-section" aria-labelledby="about-heading">
+    <!-- ======================================================== -->
+    <!-- 2. 상품목록 섹션                                        -->
+    <!-- ======================================================== -->
+    <section id="products" class="page-section" aria-labelledby="products-heading">
       <div class="container">
-        <div class="section-header">
-          <span class="section-sub">Who I Am</span>
-          <h2 id="about-heading" class="section-title">ABOUT ME</h2>
-          <div class="title-bar"></div>
+        <!-- 섹션 헤더 & 필터 바 -->
+        <div class="products-top-bar">
+          <div>
+            <h1 id="products-heading" class="section-title">산지직송 상품목록</h1>
+            <p class="section-subtitle">농가에서 바로 온 신선함을 정직한 할인가로 만나보세요.</p>
+          </div>
+
+          <!-- 정렬 컨트롤 -->
+          <div class="filter-controls">
+            <label for="sort-select" class="sr-only">상품 정렬 기준</label>
+            <select id="sort-select" class="form-select" onchange="handleSortChange(this.value)">
+              <option value="discount">할인율 높은순 (추천)</option>
+              <option value="price-asc">가격 낮은순</option>
+              <option value="price-desc">가격 높은순</option>
+              <option value="popular">인기순</option>
+              <option value="name">상품명 가나다순</option>
+            </select>
+          </div>
         </div>
 
-        <div class="about-grid">
-          <!-- 프로필 요약 카드 -->
-          <article class="about-card profile-card">
-            <div class="profile-avatar" aria-hidden="true">👨‍💻</div>
-            <h3 class="profile-name">김코딩 (Kim Coding)</h3>
-            <p class="profile-role">Computer Science Freshman (1학년)</p>
-            <p class="profile-bio">
-              "배운 것을 바로 코드로 구현해보는 것을 좋아합니다."<br>
-              수업과 독학으로 웹의 기초를 익히고 있으며, 사용자 친화적인 웹 경험을 만들어가는 프론트엔드 개발자가 되고자 합니다.
-            </p>
-            <ul class="profile-details">
-              <li><strong>소속:</strong> 컴퓨터공학과 1학년 재학</li>
-              <li><strong>관심사:</strong> 웹 표준, 반응형 UI, 클린 코드</li>
-              <li><strong>좌우명:</strong> 작지만 단단한 코드를 매일 작성하자</li>
-            </ul>
-          </article>
+        <!-- 카테고리 탭 (웹 접근성 탭 네비게이션) -->
+        <nav class="category-tabs" aria-label="과일 카테고리">
+          <button class="category-btn active" data-category="ALL">전체 과일</button>
+          <button class="category-btn" data-category="APPLE_PEAR">사과/배</button>
+          <button class="category-btn" data-category="CITRUS">감귤/만감류</button>
+          <button class="category-btn" data-category="BERRY_GRAPE">포도/딸기</button>
+          <button class="category-btn" data-category="TROPICAL">열대/기타과일</button>
+        </nav>
 
-          <!-- 보유 기술 스택 카드 -->
-          <article class="about-card skills-card">
-            <h3 class="card-subtitle">현재 학습 중인 기술</h3>
-            <div class="skills-group">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">HTML5 (Semantic Web)</span>
-                  <span class="skill-level">85%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="HTML5 숙련도">
-                  <div class="progress-fill" style="width: 85%;"></div>
-                </div>
-              </div>
+        <!-- 안내 배너: 품절 상품 자동 후순위 알림 -->
+        <div class="stock-policy-banner">
+          <span class="info-icon">ℹ️</span>
+          <span>품절된 과일은 목록의 최하단으로 자동 배치되며, <strong>[재입고 알림 신청]</strong>을 통해 입고 소식을 문자로 받아보실 수 있습니다.</span>
+        </div>
 
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">CSS3 (Responsive & Flexbox)</span>
-                  <span class="skill-level">80%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 숙련도">
-                  <div class="progress-fill" style="width: 80%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">JavaScript (기초 문법)</span>
-                  <span class="skill-level">60%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript 숙련도">
-                  <div class="progress-fill" style="width: 60%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Git & GitHub</span>
-                  <span class="skill-level">70%</span>
-                </div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Git 숙련도">
-                  <div class="progress-fill" style="width: 70%;"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="learning-tags">
-              <span class="tag">#웹접근성</span>
-              <span class="tag">#시맨틱태그</span>
-              <span class="tag">#모바일퍼스트</span>
-              <span class="tag">#오픈소스</span>
-            </div>
-          </article>
+        <!-- 상품 카드 그리드 -->
+        <div class="products-grid" id="all-products-grid" role="region" aria-label="과일 상품 목록">
+          <!-- JS 동적 렌더링 -->
         </div>
       </div>
     </section>
 
-    <!-- name 섹션 -->
-    <section id="name" class="section projects-section" aria-labelledby="projects-heading">
+    <!-- ======================================================== -->
+    <!-- 3. 장바구니 섹션                                        -->
+    <!-- ======================================================== -->
+    <section id="cart" class="page-section" aria-labelledby="cart-heading">
       <div class="container">
-        <div class="section-header">
-          <span class="section-sub">My Work</span>
-          <h2 id="projects-heading" class="section-title">PROJECTS</h2>
-          <div class="title-bar"></div>
+        <h1 id="cart-heading" class="section-title">장바구니</h1>
+        <p class="section-subtitle">담으신 상품의 수량과 50,000원 이상 무료배송 혜택을 확인하세요.</p>
+
+        <!-- 🚚 [PRD 2.3] ③ 장바구니 무료배송 진행률 게이지 바 컴포넌트 -->
+        <div class="free-shipping-card" id="cart-shipping-gauge" aria-live="polite">
+          <div class="gauge-header">
+            <div class="gauge-title-box">
+              <span class="gauge-icon" id="gauge-icon">🚚</span>
+              <h3 id="gauge-status-text">50,000원 이상 구매 시 배송비(3,000원) 전액 무료!</h3>
+            </div>
+            <button class="btn btn-sm btn-outline-primary" onclick="navigateTo('products')">
+              + 상품 더 담으러 가기
+            </button>
+          </div>
+
+          <!-- 프로그레스 바 -->
+          <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="shipping-progressbar">
+            <div class="progress-fill" id="shipping-progress-fill" style="width: 0%;"></div>
+          </div>
+
+          <div class="gauge-footer">
+            <span class="current-amount" id="gauge-current-text">현재 담은 금액: 0원</span>
+            <span class="target-amount" id="gauge-target-text">무료배송 기준: 50,000원</span>
+          </div>
         </div>
 
-        <div class="projects-grid">
-          <!-- 프로젝트 1 -->
-          <article class="project-card">
-            <div class="project-thumbnail project-thumb-1">
-              <span class="project-badge">HTML & CSS</span>
-              <div class="project-icon" aria-hidden="true">🌐</div>
+        <!-- 장바구니 본문 레이아웃 -->
+        <div class="cart-layout">
+          <!-- 장바구니 상품 목록 -->
+          <div class="cart-items-wrapper">
+            <div class="cart-table-header">
+              <label class="checkbox-label">
+                <input type="checkbox" id="check-all-items" checked onchange="toggleSelectAllItems(this.checked)">
+                <span>전체 선택 (<span id="selected-items-count">0</span>/<span id="total-items-count">0</span>)</span>
+              </label>
+              <button class="btn-text-danger" onclick="removeSelectedCartItems()">선택 삭제</button>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">개인 포트폴리오 웹사이트</h3>
-              <p class="project-desc">
-                1학년 첫 프로젝트로 제작한 반응형 웹 포트폴리오입니다. 외부 프레임워크 없이 순수 HTML5 시맨틱 마크업과 모던 CSS Flexbox/Grid 기술을 활용하여 구현했습니다.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">Responsive</span>
-              </div>
-              <div class="project-links">
-                <a href="#about" class="project-link">자세히 보기 →</a>
-              </div>
-            </div>
-          </article>
 
-          <!-- 프로젝트 2 -->
-          <article class="project-card">
-            <div class="project-thumbnail project-thumb-2">
-              <span class="project-badge">Study Project</span>
-              <div class="project-icon" aria-hidden="true">📝</div>
+            <div class="cart-items-list" id="cart-items-container">
+              <!-- 장바구니 아이템 동적 렌더링 -->
             </div>
-            <div class="project-body">
-              <h3 class="project-title">스마트 Todo 리스트 레이아웃</h3>
-              <p class="project-desc">
-                대학 생활의 과제와 일정을 관리하기 위해 디자인한 반응형 할 일 관리 UI 템플릿입니다. 시맨틱 폼 요소와 체크박스 스타일링을 연습했습니다.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-tag">HTML5 Forms</span>
-                <span class="tech-tag">CSS Flexbox</span>
-                <span class="tech-tag">UI/UX</span>
-              </div>
-              <div class="project-links">
-                <a href="#about" class="project-link">자세히 보기 →</a>
-              </div>
-            </div>
-          </article>
+          </div>
 
-          <!-- 프로젝트 3 -->
-          <article class="project-card">
-            <div class="project-thumbnail project-thumb-3">
-              <span class="project-badge">Clone Coding</span>
-              <div class="project-icon" aria-hidden="true">☕</div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">캠퍼스 카페 메뉴 소개 페이지</h3>
-              <p class="project-desc">
-                학교 앞 단골 카페의 메뉴판을 웹으로 재해석한 반응형 랜딩 페이지입니다. 미디어 쿼리를 활용해 스마트폰 화면에서도 한눈에 볼 수 있도록 설계했습니다.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-tag">CSS Grid</span>
-                <span class="tech-tag">Media Query</span>
-                <span class="tech-tag">Typography</span>
+          <!-- 결제 금액 요약 사이드바 -->
+          <aside class="cart-summary-card" aria-labelledby="summary-heading">
+            <h2 id="summary-heading" class="summary-title">결제 예상 금액</h2>
+
+            <div class="summary-rows">
+              <div class="summary-row">
+                <span class="row-label">총 상품금액</span>
+                <span class="row-value" id="summary-list-total">0원</span>
               </div>
-              <div class="project-links">
-                <a href="#about" class="project-link">자세히 보기 →</a>
+              <div class="summary-row text-danger">
+                <span class="row-label">상품 할인금액</span>
+                <span class="row-value" id="summary-discount-total">-0원</span>
+              </div>
+              <!-- 🚚 [PRD 2.3] ④ 배송비 0원 취소선 처리 -->
+              <div class="summary-row">
+                <span class="row-label">배송비</span>
+                <span class="row-value" id="summary-shipping-fee">
+                  <span class="original-fee">3,000원</span>
+                  <strong class="free-badge">0원 (무료배송)</strong>
+                </span>
+              </div>
+              <hr class="summary-divider">
+              <div class="summary-row total-row">
+                <span class="row-label">최종 결제 예정금액</span>
+                <strong class="total-amount" id="summary-final-total">0원</strong>
               </div>
             </div>
-          </article>
+
+            <button class="btn btn-primary btn-block btn-lg" id="btn-proceed-checkout" onclick="proceedToCheckout()">
+              주문 및 결제하기 (<span id="btn-checkout-count">0</span>건)
+            </button>
+
+            <div class="summary-notice">
+              <p>🌱 <strong>새벽 산지직송 안심 보증</strong></p>
+              <p>배송 중 과일 파손이나 당도 불량 발생 시 100% 교환/환불을 보장합니다.</p>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
+    <!-- ======================================================== -->
+    <!-- 4. 주문 및 결제 섹션                                    -->
+    <!-- ======================================================== -->
+    <section id="checkout" class="page-section" aria-labelledby="checkout-heading">
+      <div class="container">
+        <h1 id="checkout-heading" class="section-title">주문 및 결제</h1>
+        <p class="section-subtitle">배송지와 결제 정보를 확인 후 주문을 완료해 주세요.</p>
+
+        <form id="checkout-form" onsubmit="handleOrderSubmit(event)">
+          <div class="checkout-layout">
+            <!-- 왼쪽: 배송지 & 주문자 정보 -->
+            <div class="checkout-inputs">
+              <!-- 배송 정보 카드 -->
+              <div class="card checkout-card">
+                <h3 class="card-title">📦 배송지 정보</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="orderer-name" class="form-label">받는 분 성함 <span class="required">*</span></label>
+                    <input type="text" id="orderer-name" class="form-input" required placeholder="홍길동" value="김신선">
+                  </div>
+                  <div class="form-group">
+                    <label for="orderer-phone" class="form-label">휴대폰 번호 <span class="required">*</span></label>
+                    <input type="tel" id="orderer-phone" class="form-input" required placeholder="010-1234-5678" value="010-9876-5432">
+                  </div>
+                  <div class="form-group col-span-2">
+                    <label for="order-address" class="form-label">배송 주소 <span class="required">*</span></label>
+                    <input type="text" id="order-address" class="form-input" required placeholder="도로명 주소 입력" value="서울특별시 송파구 올림픽로 300 신선과일타워 1201호">
+                  </div>
+                  <div class="form-group col-span-2">
+                    <label for="order-memo" class="form-label">배송 요청사항</label>
+                    <select id="order-memo" class="form-select">
+                      <option value="문 앞에 놓아주세요.">문 앞에 놓아주세요 (부재 시 연락)</option>
+                      <option value="배송 전 미리 연락 바랍니다.">배송 전 미리 연락 바랍니다.</option>
+                      <option value="경비실에 맡겨주세요.">경비실에 맡겨주세요.</option>
+                      <option value="택배함에 보관해 주세요.">택배함에 보관해 주세요.</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 결제 수단 선택 카드 -->
+              <div class="card checkout-card">
+                <h3 class="card-title">💳 결제 수단</h3>
+                <div class="payment-options">
+                  <label class="payment-option selected">
+                    <input type="radio" name="payment-method" value="TOSS" checked>
+                    <span class="pay-logo">💙</span>
+                    <span class="pay-title">토스페이 (간편결제)</span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment-method" value="KAKAO">
+                    <span class="pay-logo">💛</span>
+                    <span class="pay-title">카카오페이</span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment-method" value="CARD">
+                    <span class="pay-logo">💳</span>
+                    <span class="pay-title">신용/체크카드</span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment-method" value="BANK">
+                    <span class="pay-logo">🏦</span>
+                    <span class="pay-title">무통장 입금</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 주문 상품 목록 스냅샷 미리보기 -->
+              <div class="card checkout-card">
+                <h3 class="card-title">🍎 주문 상품 확인 (<span id="checkout-item-count">0</span>건)</h3>
+                <div class="checkout-items-preview" id="checkout-items-preview">
+                  <!-- JS 동적 렌더링 -->
+                </div>
+              </div>
+            </div>
+
+            <!-- 오른쪽: 최종 결제 확인 사이드바 -->
+            <aside class="checkout-summary-card">
+              <h3 class="summary-title">최종 결제 금액</h3>
+              <div class="summary-rows">
+                <div class="summary-row">
+                  <span>주문 총 상품금액</span>
+                  <span id="co-list-total">0원</span>
+                </div>
+                <div class="summary-row text-danger">
+                  <span>할인 금액</span>
+                  <span id="co-discount-total">-0원</span>
+                </div>
+                <!-- 🚚 [PRD 2.3] ④ 결제 금액 요약 배송비 0원 취소선 처리 -->
+                <div class="summary-row">
+                  <span>배송비</span>
+                  <span id="co-shipping-fee">
+                    <span class="original-fee">3,000원</span>
+                    <strong class="free-badge">0원 (무료배송)</strong>
+                  </span>
+                </div>
+                <hr class="summary-divider">
+                <div class="summary-row total-row">
+                  <span>최종 결제금액</span>
+                  <strong class="total-amount" id="co-final-total">0원</strong>
+                </div>
+              </div>
+
+              <div class="free-shipping-badge-box" id="co-shipping-status-banner">
+                <!-- 5만원 달성 여부에 따라 동적 문구 -->
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-pay">
+                <span id="btn-pay-text">0원 결제하기</span>
+              </button>
+
+              <p class="terms-notice">
+                위 주문 내용을 확인하였으며 결제 및 개인정보 제공에 동의합니다.
+              </p>
+            </aside>
+          </div>
+        </form>
+      </div>
+    </section>
 
   </main>
 
-  <!-- 사이트 푸터 영역 -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <p class="footer-copyright">
-        &copy; 2026 Kim Coding. All Rights Reserved.
-      </p>
-      <p class="footer-note">
-        Built with Pure HTML5 &amp; CSS3 • Designed for Web Accessibility &amp; Responsiveness
-      </p>
+  <!-- ======================================================== -->
+  <!-- 푸터                                                    -->
+  <!-- ======================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="logo-area">
+          <span class="logo-icon">🍎</span>
+          <span class="footer-logo-title">오늘의과일</span>
+        </div>
+        <p class="footer-desc">
+          집 앞까지 오는 산지직송 프리미엄 신선 과일 마켓 B2C 커머스 웹 애플리케이션 포트폴리오
+        </p>
+        <div class="footer-badges">
+          <span class="tech-tag">HTML5 Semantic</span>
+          <span class="tech-tag">CSS3 Responsive</span>
+          <span class="tech-tag">Vanilla JavaScript</span>
+          <span class="tech-tag">PRD v1.0 호환</span>
+        </div>
+      </div>
+
       <div class="footer-links">
-        <a href="#about">ABOUT</a>
-        <span>•</span>
-        <a href="#projects">PROJECTS</a>
-        <span>•</span>
-        <a href="#contact">CONTACT</a>
+        <h4>핵심 구현 사양</h4>
+        <ul>
+          <li>✔️ 3단 가격 앵커링 (정가/판매가/구간별 뱃지)</li>
+          <li>✔️ 품절(SOLD OUT) 흑백/사선 스트라이프 처리</li>
+          <li>✔️ 50,000원 이상 실시간 무료배송 4지점 연동</li>
+          <li>✔️ 타임세일 실시간 카운트다운 타이머</li>
+          <li>✔️ 모바일/태블릿/데스크톱 완벽 반응형</li>
+        </ul>
+      </div>
+
+      <div class="footer-cs">
+        <h4>고객만족센터</h4>
+        <strong class="cs-phone">1588-0000</strong>
+        <p class="cs-hours">평일 09:00 ~ 18:00 (점심 12:00 ~ 13:00)<br>주말 및 공휴일 휴무 / 1:1 당도보장제 운영</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 오늘의과일 (Daily Fruit Portfolio). All rights reserved. 개인 포트폴리오 웹사이트입니다.</p>
       </div>
     </div>
   </footer>
+
+  <!-- ======================================================== -->
+  <!-- 모달 1: 재입고 알림 신청 모달 (PRD 2.2)                   -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="restock-modal" aria-hidden="true" role="dialog" aria-labelledby="restock-modal-title">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('restock-modal')" aria-label="닫기">×</button>
+      <div class="modal-header">
+        <span class="modal-icon">🔔</span>
+        <h3 id="restock-modal-title">재입고 알림 신청</h3>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          현재 품절된 <strong id="restock-product-name" class="text-primary">과일</strong>의 신선한 다음 수확분이 입고되는 즉시 가장 먼저 알림 문자를 보내드립니다.
+        </p>
+        <form onsubmit="handleRestockSubmit(event)">
+          <input type="hidden" id="restock-product-id">
+          <div class="form-group">
+            <label for="restock-phone" class="form-label">알림받을 연락처</label>
+            <input type="tel" id="restock-phone" class="form-input" required placeholder="010-0000-0000" value="010-9876-5432">
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label text-sm">
+              <input type="checkbox" required checked>
+              <span>재입고 알림 수신을 위한 개인정보(연락처) 수집에 동의합니다.</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">알림 신청 완료</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 모달 2: 주문 완료 및 배송 조회 모달                        -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="order-success-modal" aria-hidden="true" role="dialog" aria-labelledby="order-success-title">
+    <div class="modal-card modal-lg">
+      <div class="order-success-header">
+        <span class="success-icon">🎉</span>
+        <h3 id="order-success-title">주문이 성공적으로 접수되었습니다!</h3>
+        <p class="order-no-text">주문번호: <strong id="modal-order-no">ORD-20260915-001</strong></p>
+      </div>
+
+      <!-- PRD 주문 상태 흐름 트래커: PENDING → PAID → PREPARING → SHIPPING → DELIVERED -->
+      <div class="order-tracker-box">
+        <h4 class="tracker-title">실시간 배송 진행 현황</h4>
+        <div class="tracker-steps">
+          <div class="tracker-step done">
+            <div class="step-circle">✓</div>
+            <div class="step-name">결제완료</div>
+          </div>
+          <div class="tracker-line active"></div>
+          <div class="tracker-step active">
+            <div class="step-circle">📦</div>
+            <div class="step-name">상품준비중</div>
+          </div>
+          <div class="tracker-line"></div>
+          <div class="tracker-step">
+            <div class="step-circle">🚚</div>
+            <div class="step-name">배송중</div>
+          </div>
+          <div class="tracker-line"></div>
+          <div class="tracker-step">
+            <div class="step-circle">🏠</div>
+            <div class="step-name">배송완료</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="order-details-box" id="modal-order-summary">
+          <!-- 주문 상세 동적 렌더링 -->
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-primary btn-block" onclick="closeOrderSuccessModalAndHome()">
+            확인 및 쇼핑 계속하기
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 컨테이너 -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- 📱 [스마트폰/태블릿] 하단 고정 모바일 탭 네비게이션 바 -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="모바일 하단 빠른 메뉴">
+    <a href="#home" class="bottom-nav-item active" data-target="home">
+      <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>홈</span>
+    </a>
+    <a href="#products" class="bottom-nav-item" data-target="products">
+      <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+      <span>상품목록</span>
+    </a>
+    <a href="#cart" class="bottom-nav-item" data-target="cart">
+      <div class="bottom-nav-cart-wrapper">
+        <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        <span class="cart-badge mobile-cart-badge" id="mobile-cart-count">0</span>
+      </div>
+      <span>장바구니</span>
+    </a>
+    <a href="#checkout" class="bottom-nav-item" data-target="checkout">
+      <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+      <span>주문/결제</span>
+    </a>
+  </nav>
+
+  <!-- JavaScript 연결 -->
+  <script src="script.js"></script>
 </body>
 </html>
 
