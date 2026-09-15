@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1학년 주니어 개발자의 첫 개인 포트폴리오 웹사이트입니다.">
+  <title>Kim Dev | 1학년 개발자의 첫 포트폴리오</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <!-- 외부 스타일시트 연결 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 헤더 영역 (푸른 계열 배경) -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="#">
+          <span class="logo-badge">Year 1</span>
+          <span class="logo-text">Kim Dev</span>
+        </a>
+      </div>
+      <!-- 웹 접근성을 고려한 시맨틱 내비게이션 -->
+      <nav class="site-nav" aria-label="메인 내비게이션">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link">ABOUT</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">PROJECTS</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">CONTACT</a></li>
+          <li class="nav-item"><a href="#name"추가된 이름 class="nav-link">추가된메뉴</a></li>
+          <li class="nav-item"><a href="#addmenu"문의사항 class="nav-link">문의사항</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- 헤더 내부 히어로 배너 소개 문구 -->
+    <div class="hero-content">
+      <p class="hero-tag">🌱 성장하는 주니어 개발자</p>
+      <h1 class="hero-title">안녕하세요, 매일 코딩하며 배우는<br><span class="highlight">1학년 개발자 김현우</span>입니다.</h1>
+      <h1 class="hero-title">안녕하세요, 매일 코딩하며 배우는<br><span class="highlight">1학년 개발자 김코딩</span>입니다.</h1>
+      <p class="hero-description">
+        기초를 단단히 다지고, 의미 있는 웹 서비스를 만들기 위해 끊임없이 탐구합니다.<br>
+        HTML5 시맨틱 마크업과 반응형 웹 디자인을 학습하며 첫 발을 내딛었습니다.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">프로젝트 보러가기</a>
+        <a href="#contact" class="btn btn-secondary">연락하기</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <main class="main-content">
+
+    <!-- ABOUT 섹션 -->
+    <section id="about" class="section about-section" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-sub">Who I Am</span>
+          <h2 id="about-heading" class="section-title">ABOUT ME</h2>
+          <div class="title-bar"></div>
+        </div>
+
+        <div class="about-grid">
+          <!-- 프로필 요약 카드 -->
+          <article class="about-card profile-card">
+            <div class="profile-avatar" aria-hidden="true">👨‍💻</div>
+            <h3 class="profile-name">김코딩 (Kim Coding)</h3>
+            <p class="profile-role">Computer Science Freshman (1학년)</p>
+            <p class="profile-bio">
+              "배운 것을 바로 코드로 구현해보는 것을 좋아합니다."<br>
+              수업과 독학으로 웹의 기초를 익히고 있으며, 사용자 친화적인 웹 경험을 만들어가는 프론트엔드 개발자가 되고자 합니다.
+            </p>
+            <ul class="profile-details">
+              <li><strong>소속:</strong> 컴퓨터공학과 1학년 재학</li>
+              <li><strong>관심사:</strong> 웹 표준, 반응형 UI, 클린 코드</li>
+              <li><strong>좌우명:</strong> 작지만 단단한 코드를 매일 작성하자</li>
+            </ul>
+          </article>
+
+          <!-- 보유 기술 스택 카드 -->
+          <article class="about-card skills-card">
+            <h3 class="card-subtitle">현재 학습 중인 기술</h3>
+            <div class="skills-group">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">HTML5 (Semantic Web)</span>
+                  <span class="skill-level">85%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="HTML5 숙련도">
+                  <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">CSS3 (Responsive & Flexbox)</span>
+                  <span class="skill-level">80%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 숙련도">
+                  <div class="progress-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">JavaScript (기초 문법)</span>
+                  <span class="skill-level">60%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript 숙련도">
+                  <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Git & GitHub</span>
+                  <span class="skill-level">70%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Git 숙련도">
+                  <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="learning-tags">
+              <span class="tag">#웹접근성</span>
+              <span class="tag">#시맨틱태그</span>
+              <span class="tag">#모바일퍼스트</span>
+              <span class="tag">#오픈소스</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS 섹션 -->
+    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-sub">My Work</span>
+          <h2 id="projects-heading" class="section-title">PROJECTS</h2>
+          <div class="title-bar"></div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- 프로젝트 1 -->
+          <article class="project-card">
+            <div class="project-thumbnail project-thumb-1">
+              <span class="project-badge">HTML & CSS</span>
+              <div class="project-icon" aria-hidden="true">🌐</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">개인 포트폴리오 웹사이트</h3>
+              <p class="project-desc">
+                1학년 첫 프로젝트로 제작한 반응형 웹 포트폴리오입니다. 외부 프레임워크 없이 순수 HTML5 시맨틱 마크업과 모던 CSS Flexbox/Grid 기술을 활용하여 구현했습니다.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">Responsive</span>
+              </div>
+              <div class="project-links">
+                <a href="#about" class="project-link">자세히 보기 →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 프로젝트 2 -->
+          <article class="project-card">
+            <div class="project-thumbnail project-thumb-2">
+              <span class="project-badge">Study Project</span>
+              <div class="project-icon" aria-hidden="true">📝</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">스마트 Todo 리스트 레이아웃</h3>
+              <p class="project-desc">
+                대학 생활의 과제와 일정을 관리하기 위해 디자인한 반응형 할 일 관리 UI 템플릿입니다. 시맨틱 폼 요소와 체크박스 스타일링을 연습했습니다.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">HTML5 Forms</span>
+                <span class="tech-tag">CSS Flexbox</span>
+                <span class="tech-tag">UI/UX</span>
+              </div>
+              <div class="project-links">
+                <a href="#about" class="project-link">자세히 보기 →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 프로젝트 3 -->
+          <article class="project-card">
+            <div class="project-thumbnail project-thumb-3">
+              <span class="project-badge">Clone Coding</span>
+              <div class="project-icon" aria-hidden="true">☕</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">캠퍼스 카페 메뉴 소개 페이지</h3>
+              <p class="project-desc">
+                학교 앞 단골 카페의 메뉴판을 웹으로 재해석한 반응형 랜딩 페이지입니다. 미디어 쿼리를 활용해 스마트폰 화면에서도 한눈에 볼 수 있도록 설계했습니다.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">CSS Grid</span>
+                <span class="tech-tag">Media Query</span>
+                <span class="tech-tag">Typography</span>
+              </div>
+              <div class="project-links">
+                <a href="#about" class="project-link">자세히 보기 →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT 섹션 -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-sub">Get In Touch</span>
+          <h2 id="contact-heading" class="section-title">CONTACT</h2>
+          <div class="title-bar"></div>
+        </div>
+
+        <div class="contact-wrapper">
+          <!-- 연락처 정보 -->
+          <div class="contact-info">
+            <h3>함께 성장할 준비가 되어 있습니다!</h3>
+            <p>
+              궁금한 점이 있거나 스터디 제안, 피드백이 있으시다면 언제든 편하게 연락해 주세요. 성실하게 답변드리겠습니다.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-label">Email:</span>
+                <a href="mailto:dev.kimcoding@example.com">dev.kimcoding@example.com</a>
+              </li>
+              <li>
+                <span class="contact-label">GitHub:</span>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/kimcoding-dev</a>
+              </li>
+              <li>
+                <span class="contact-label">Blog:</span>
+                <a href="https://velog.io" target="_blank" rel="noopener noreferrer">velog.io/@kimcoding</a>
+              </li>
+              <li>
+                <span class="contact-label">Location:</span>
+                <span>Seoul, Republic of Korea</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 문의 폼 (시맨틱 form 태그) -->
+          <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('1학년 개발자 김현우게 메시지가 전달되었습니다 (데모).');">
+          <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('1학년 개발자 김코딩에게 메시지가 전달되었습니다 (데모).');">
+            <div class="form-group">
+              <label for="name">성명</label>
+              <input type="text" id="name" name="name" placeholder="홍길동" required>
+            </div>
+            <div class="form-group">
+              <label for="email">이메일 주소</label>
+              <input type="email" id="email" name="email" placehoㅋlder="example@domain.com" required>
+              <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">메시지 내용</label>
+              <textarea id="message" name="message" rows="4" placeholder="피드백이나 응원의 한마디를 남겨주세요!" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit">메시지 보내기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- addmenu 섹션 -->
+    <section id="about" class="section about-section" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-sub">Who I Am</span>
+          <h2 id="about-heading" class="section-title">ABOUT ME</h2>
+          <div class="title-bar"></div>
+        </div>
+
+        <div class="about-grid">
+          <!-- 프로필 요약 카드 -->
+          <article class="about-card profile-card">
+            <div class="profile-avatar" aria-hidden="true">👨‍💻</div>
+            <h3 class="profile-name">김코딩 (Kim Coding)</h3>
+            <p class="profile-role">Computer Science Freshman (1학년)</p>
+            <p class="profile-bio">
+              "배운 것을 바로 코드로 구현해보는 것을 좋아합니다."<br>
+              수업과 독학으로 웹의 기초를 익히고 있으며, 사용자 친화적인 웹 경험을 만들어가는 프론트엔드 개발자가 되고자 합니다.
+            </p>
+            <ul class="profile-details">
+              <li><strong>소속:</strong> 컴퓨터공학과 1학년 재학</li>
+              <li><strong>관심사:</strong> 웹 표준, 반응형 UI, 클린 코드</li>
+              <li><strong>좌우명:</strong> 작지만 단단한 코드를 매일 작성하자</li>
+            </ul>
+          </article>
+
+          <!-- 보유 기술 스택 카드 -->
+          <article class="about-card skills-card">
+            <h3 class="card-subtitle">현재 학습 중인 기술</h3>
+            <div class="skills-group">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">HTML5 (Semantic Web)</span>
+                  <span class="skill-level">85%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="HTML5 숙련도">
+                  <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">CSS3 (Responsive & Flexbox)</span>
+                  <span class="skill-level">80%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 숙련도">
+                  <div class="progress-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">JavaScript (기초 문법)</span>
+                  <span class="skill-level">60%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript 숙련도">
+                  <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Git & GitHub</span>
+                  <span class="skill-level">70%</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Git 숙련도">
+                  <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="learning-tags">
+              <span class="tag">#웹접근성</span>
+              <span class="tag">#시맨틱태그</span>
+              <span class="tag">#모바일퍼스트</span>
+              <span class="tag">#오픈소스</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- name 섹션 -->
+    <section id="name" class="section projects-section" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-sub">My Work</span>
+          <h2 id="projects-heading" class="section-title">PROJECTS</h2>
+          <div class="title-bar"></div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- 프로젝트 1 -->
+          <article class="project-card">
+            <div class="project-thumbnail project-thumb-1">
+              <span class="project-badge">HTML & CSS</span>
+              <div class="project-icon" aria-hidden="true">🌐</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">개인 포트폴리오 웹사이트</h3>
+              <p class="project-desc">
+                1학년 첫 프로젝트로 제작한 반응형 웹 포트폴리오입니다. 외부 프레임워크 없이 순수 HTML5 시맨틱 마크업과 모던 CSS Flexbox/Grid 기술을 활용하여 구현했습니다.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">Responsive</span>
+              </div>
+              <div class="project-links">
+                <a href="#about" class="project-link">자세히 보기 →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 프로젝트 2 -->
+          <article class="project-card">
+            <div class="project-thumbnail project-thumb-2">
+              <span class="project-badge">Study Project</span>
+              <div class="project-icon" aria-hidden="true">📝</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">스마트 Todo 리스트 레이아웃</h3>
+              <p class="project-desc">
+                대학 생활의 과제와 일정을 관리하기 위해 디자인한 반응형 할 일 관리 UI 템플릿입니다. 시맨틱 폼 요소와 체크박스 스타일링을 연습했습니다.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">HTML5 Forms</span>
+                <span class="tech-tag">CSS Flexbox</span>
+                <span class="tech-tag">UI/UX</span>
+              </div>
+              <div class="project-links">
+                <a href="#about" class="project-link">자세히 보기 →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 프로젝트 3 -->
+          <article class="project-card">
+            <div class="project-thumbnail project-thumb-3">
+              <span class="project-badge">Clone Coding</span>
+              <div class="project-icon" aria-hidden="true">☕</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">캠퍼스 카페 메뉴 소개 페이지</h3>
+              <p class="project-desc">
+                학교 앞 단골 카페의 메뉴판을 웹으로 재해석한 반응형 랜딩 페이지입니다. 미디어 쿼리를 활용해 스마트폰 화면에서도 한눈에 볼 수 있도록 설계했습니다.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">CSS Grid</span>
+                <span class="tech-tag">Media Query</span>
+                <span class="tech-tag">Typography</span>
+              </div>
+              <div class="project-links">
+                <a href="#about" class="project-link">자세히 보기 →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- 사이트 푸터 영역 -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-copyright">
+        &copy; 2026 Kim Coding. All Rights Reserved.
+      </p>
+      <p class="footer-note">
+        Built with Pure HTML5 &amp; CSS3 • Designed for Web Accessibility &amp; Responsiveness
+      </p>
+      <div class="footer-links">
+        <a href="#about">ABOUT</a>
+        <span>•</span>
+        <a href="#projects">PROJECTS</a>
+        <span>•</span>
+        <a href="#contact">CONTACT</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
